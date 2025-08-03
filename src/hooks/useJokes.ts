@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Joke } from '../types';
 
-const useJokes = () => {
+export const useJokes = () => {
   const [savedJokes, setSavedJokes] = useState<Joke[]>([]);
 
   const saveJoke = (joke: Joke) => {

@@ -5,8 +5,7 @@ import {
   CardContent, 
   Typography, 
   Button, 
-  Box,
-  Grid
+  Box
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Joke } from '../types';
@@ -34,37 +33,35 @@ const SavedPage: React.FC<SavedPageProps> = ({ savedJokes, deleteJoke }) => {
           </Typography>
         </Box>
       ) : (
-        <Grid container spacing={3} sx={{ mt: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, mt: 2 }}>
           {savedJokes.map((joke) => (
-            <Grid item xs={12} md={6} key={joke.id}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Typography variant="h6" component="h2" gutterBottom>
-                    {joke.setup}
-                  </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
-                    {joke.punchline}
-                  </Typography>
-                  <Typography variant="caption" display="block" sx={{ mt: 2 }}>
-                    Type: {joke.type} | ID: {joke.id}
-                  </Typography>
-                  
-                  <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
-                    <Button 
-                      variant="outlined" 
-                      color="error"
-                      startIcon={<DeleteIcon />}
-                      onClick={() => handleDeleteJoke(joke.id)}
-                      size="small"
-                    >
-                      Delete
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Card>
-            </Grid>
+            <Card key={joke.id} sx={{ width: '100%' }}>
+              <CardContent>
+                <Typography variant="h6" component="h2" gutterBottom>
+                  {joke.setup}
+                </Typography>
+                <Typography variant="body1" color="text.secondary" sx={{ mt: 2 }}>
+                  {joke.punchline}
+                </Typography>
+                <Typography variant="caption" display="block" sx={{ mt: 2 }}>
+                  Type: {joke.type} | ID: {joke.id}
+                </Typography>
+                
+                <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
+                  <Button 
+                    variant="outlined" 
+                    color="error"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => handleDeleteJoke(joke.id)}
+                    size="small"
+                  >
+                    Delete
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
           ))}
-        </Grid>
+        </Box>
       )}
       
       {savedJokes.length > 0 && (
