@@ -8,8 +8,8 @@ import {
   Box,
   Alert
 } from '@mui/material';
-
 import { Joke } from '../types';
+
 interface FrontPageProps {
   saveJoke?: (joke: Joke) => void;
 }
@@ -79,7 +79,7 @@ const FrontPage: React.FC<FrontPageProps> = ({ saveJoke }) => {
           disabled={loading}
           size="large"
         >
-          Get New Joke
+          Get Joke
         </Button>
 
         {loading && (
